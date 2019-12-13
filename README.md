@@ -59,7 +59,7 @@
   }
 ```
 
-### 4. Lotte 範例網頁 (http://demo.www.zhe.tw/lotte/+study/sprite/src/)
+### 4. Lotte 範例網頁 (https://lottevic.github.io/sprite/src/)
 
 
 ### 5. CSS animation-timing-function: steps 解說
