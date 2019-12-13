@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-TW">
+<head>
+  <title>Sprite 動畫範例</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap 4 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <style>
+    pre {
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      color: #333;
+      page-break-inside: avoid;
+      line-height: 1.6;
+      margin-top: .75rem;
+      margin-bottom: 0rem;
+      max-width: 100%;
+      overflow: auto;
+      padding: 1rem 1.5rem;
+      width: 100%;
+      display: block;
+      word-wrap: break-word;
+      font-size: 12px;
+    }
+    pre span{
+      color: #f36d33;
+    }
+    h5{
+      border-top: 1px solid #f36d33;
+      padding-top: 5px;
+    }
+    .sticker{
+        width: 200px;
+        height: 200px;
+        background-size: 200px 200px;
+        /* 原本的圖片是(400x影格數) * 400px，我設定顯示區域為200x200px for手機 */
+        background-repeat: no-repeat;
+        background-position: 0px center;
+        overflow: hidden;
+      }
+      .sticker-ani-2steps{
+        animation-iteration-count: infinite; 
+        animation-duration: 1s; 
+        background-size: 400px 200px;
+        animation-timing-function: steps(2,end); 
+        animation-name: stickerAniSteps2;
+      }
+      
+      @keyframes stickerAniSteps2
+      {
+          0% { background-position: 0px center;  }
+          100% { background-position: -400px center;  } 
+      }
+      .sticker-ani-4steps{
+        animation-iteration-count: infinite;
+        animation-duration: 2s; 
+        background-size: 800px 200px;
+        animation-timing-function: steps(4, end); 
+        animation-name: stickerAniSteps4;
+      }
+      @keyframes stickerAniSteps4
+      {
+          0% { background-position: 0px center;  }
+          100% { background-position: -800px center;  }  
+      }   
+      .sticker-ani-linear{
+        animation-iteration-count: infinite; 
+        animation-duration: 1s; 
+        background-size: 400px 200px;
+        animation-timing-function: linear;
+        animation-name: stickerAniSteps2haha;
+      }
+      .sticker-ani-ease-in{
+        animation-iteration-count: infinite; 
+        animation-duration: 1s; 
+        background-size: 400px 200px;
+        animation-timing-function: ease-in;
+        animation-name: stickerAniSteps2haha;
+      }
+      @keyframes stickerAniSteps2haha
+      {
+          0% { background-position: 0px center;  }
+          100% { background-position: -200px center;  } 
+      }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h2>Sprite 動畫範例</h2>
+</div>
+
+<div class="container pb-5" >
+  
+    <div class="row">
+      <div class="col-12">
+        <h5>範例: 2影格</h5>
+        <p class='mt-4'>原始圖</p>
+        <img src="ani2f.png" style='width:auto; height: 200px;'>
+      </div>
+      <div class="col-lg-3 col-12">
+        <p class='mt-4'>作成動圖</p>
+        <div class="sticker sticker-ani-2steps" style="background-image: url(ani2f.png);"></div>
+      </div>
+      <div class="col-lg-9 col-12">
+        <p class='mt-4'>css</p>
+        <pre>
+.sticker-ani-2steps{
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  <span>background-size: 400px 200px;
+  animation-timing-function: steps(2,end);
+  animation-name: stickerAniSteps2;</span>
+}
+@keyframes stickerAniSteps2
+{
+  0% { background-position: 0px center; }
+  <span>100% { background-position: -400px center; }</span>
+}
+        </pre>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <h5>範例: 4影格</h5>
+        <p class='mt-4'>原始圖</p>
+        <img src="ani4f.png" style='width:auto; height: 200px;'>
+      </div>
+      <div class="col-lg-3 col-12">
+        <p class='mt-4'>作成動圖</p>
+        <div class="sticker sticker-ani-4steps" style="background-image: url(ani4f.png);"></div>
+      </div>
+      <div class="col-lg-5 col-12">
+        <p class='mt-4'>css</p>
+        <pre>
+.sticker-ani-4steps{
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  <span>background-size: 800px 200px;
+  animation-timing-function: steps(4,end);
+  animation-name: stickerAniSteps4;</span>
+}
+@keyframes stickerAniSteps2
+{
+  0% { background-position: 0px center; }
+  <span>100% { background-position: -800px center; }</span>
+}
+              </pre>
+      </div>
+      <div class="col-lg-4 col-12">
+        <img src="https://image.zhangxinxu.com/image/blog/201806/2018-06-11_223630.png" alt="" style="margin-top: 100px;width: 90%; height:auto;">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-12">
+        <h5>範例: CSS animation-timing-function</h5>
+        <p class='mt-4'>原始圖</p>
+        <img src="ani2f.png" style='width:auto; height: 200px;'>
+      </div>
+      <div class="col-3">
+        <p class='mt-4'>linear 動圖</p>
+        <div class="sticker sticker-ani-linear" style="background-image: url(ani2f.png);"></div>
+      </div>
+      <div class="col-9">
+        <p class='mt-4'>css</p>
+        <pre>
+.sticker-ani-linear{
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  background-size: 400px 200px;
+  <span>animation-timing-function: linear;</span>
+  animation-name: stickerAniSteps2;
+}
+        </pre>
+      </div>
+      <div class="col-3">
+        <p class='mt-4'>ease-in 動圖</p>
+        <div class="sticker sticker-ani-ease-in" style="background-image: url(ani2f.png);"></div>
+      </div>
+      <div class="col-9">
+        <p class='mt-4'>css</p>
+        <pre>
+.sticker-ani-ease-in{
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  background-size: 400px 200px;
+  <span>animation-timing-function: ease-in;</span>
+  animation-name: stickerAniSteps2;
+}
+              </pre>
+      </div>
+    </div>
+    
+</body>
+</html>
